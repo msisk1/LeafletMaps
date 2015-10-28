@@ -4,36 +4,43 @@
           href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" /> 
 </head>
 <body>
-    <div id="map" style="width: 700px; height: 300px"></div>
+    <div id="map" style="width: 100%; height: 100%"></div>
  
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 
     <script>
-     var map = L.map('map',{
-         center:[-25.324, 78.574],
-         zoom: 4,
-         maxZoom: 7
-     });
+    var map = L.map('map', {
+    center: [-25.324, 78.574],
+    zoom: 4,
+    maxZoom: 9
+});
 
-	var imaginaryLayer = L.tileLayer.wms("http://modernism.gistemp.com/geoserver/wms?", {
-    		layers: 'sde:rect02',
-    		format: 'image/png',
-   			//transparent: true,
-    		version: '1.1.0',
-		}).addTo(map);
+var imaginaryLayer = L.tileLayer.wms("http://modernism.gistemp.com/geoserver/wms?", {
+    layers: 'sde:MP_Rect_crs_CM',
+    format: 'image/png',
+    //transparent: true,
+    version: '1.1.0'
+});
+map.setMaxBounds(map.getBounds());
 
-	map.setMaxBounds(map.getBounds());
-	var popup = L.popup();
-	function onMapClick(e) {
-	var lat = e.latlng.lat.toFixed(5)
-	var lon = e.latlng.lng.toFixed(5)
-    popup
-        .setLatLng(e.latlng)
+imaginaryLayer.addTo(map);
+//map.setZoom(5);
+map.setView([-25.324, 78.574],5,{
+    reset: true
+});
+
+//
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    var lat = e.latlng.lat.toFixed(5);
+    var lon = e.latlng.lng.toFixed(5);
+    popup.setLatLng(e.latlng)
         .setContent("Latitude = " + lat + " ; Longitude = " + lon)
         .openOn(map);
-	}//end function onMapClick	
-
-	map.on('click', onMapClick);
+} //end function onMapClick	
+map.on('click', onMapClick);
     </script>
 </body>
 </html>
