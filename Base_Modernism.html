@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link rel="stylesheet" 
+          href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" /> 
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 100%"></div>
+ 
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <script>
+var map = L.map('map').setView([51.505, -0.09], 3);
+
+var modernismLayer = L.tileLayer.wms("http://modernism.gistemp.com/geoserver/wms?", {
+    layers: 'sde:ThreeColor',
+    format: 'image/png',
+    noWrap: true,
+    version: '1.1.0'
+});
+//modernismLayer.addTo(map);
+
+
+//This one uses a local tile source and is way faster for some reason
+var modernismLayer2 = L.tileLayer("http://www.nd.edu/~msisk1/testing/Base_Modernism/{z}/{x}/{y}.png", {
+		tms: true //tms: true is required for this type of tiles
+	});
+modernismLayer2.addTo(map);
+
+
+var newyork = L.marker([40.71, -74.00]).addTo(map);
+
+var london = L.marker([51.5, -0.09]).addTo(map);
+
+london.bindPopup("<b>London: </b><br><br>  No stories currently")
+newyork.bindPopup('<b>New York: </b><br><br>  <a href="http://modernism.gistemp.com/omeka/neatline/fullscreen/fitzgeralds-may-day"target=\"_blank\"> May Day </a> ')
+
+//cut this as necessary, it just zooms it in a bit more
+var group = new L.featureGroup([newyork, london]);
+map.fitBounds(group.getBounds());
+//map.updateSize();
+    </script>
+</body>
+</html>

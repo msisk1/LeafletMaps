@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" 
+          href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" /> 
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 100%"></div>
+ 
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+    <script>
+	var map = L.map('map');
+	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	var letLayer = L.tileLayer("http://www.nd.edu/~msisk1/testing/Letarouilly_LoRes/{z}/{x}/{y}.png", {
+		tms: true //tms: true is required for this type of tiles
+	});
+	letLayer.addTo(map);
+
+	var rome = new L.LatLng(41.9, 12.5); // geographical point (longitude and latitude)
+	map.setView(rome, 13); // the 13 is zoom level
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
