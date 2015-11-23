@@ -9,9 +9,9 @@
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 
     <script>
-	//49.628030, -35.864285, 105.097839, -12.173045
-	
- var map = L.map('map', {
+var filterTestingOut = false; 
+
+var map = L.map('map', {
      center: [-25.324, 78.574],
      zoom: 4,
      maxZoom: 9
@@ -20,245 +20,276 @@
  var imaginaryLayer = L.tileLayer.wms("http://modernism.gistemp.com/geoserver/wms?", {
      layers: 'sde:MP_Rect_crs_CM',
      format: 'image/png',
-     //transparent: true,
      version: '1.1.0'
  });
  map.setMaxBounds(map.getBounds());
 
  imaginaryLayer.addTo(map);
- //map.setZoom(5);
  map.setView([-25.324, 78.574], 5, {
      reset: true
  });
 
  var studentPoints = [{
-    "type": "Feature",
+     "type": "Feature",
          "id": 1,
          "properties": {
-             "Name": "Meghan Springer",
+         "Name": "Meghan Springer",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Meghan-Springer"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [81.25488, -15.91907]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 2,
          "properties": {
-             "Name": "Margaret Dransfeld",
+         "Name": "Margaret Dransfeld",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Margaret-Dransfeld"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [92.7301, -16.1883]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 3,
          "properties": {
-             "Name": "Megan Gibbons",
+         "Name": "Megan Gibbons",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Megan-Gibbons"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [78.35449, -27.09825]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 4,
          "properties": {
-             "Name": "Alice Hou",
+         "Name": "Alice Hou",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Alice-Hou"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [91.32935, -28.12044]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 5,
          "properties": {
-             "Name": "Kara Copeland",
+         "Name": "Kara Copeland",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Kara-Copeland"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [90.93384, -27.14714]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 6,
          "properties": {
-             "Name": "Brooke Kowalski",
+         "Name": "Brooke Kowalski",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Brooke-Kowalski"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [88.94531, -34.958]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 7,
          "properties": {
-             "Name": "Joanne Kim",
+         "Name": "Joanne Kim",
              "Notes": "Northern part of Orissa",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Joanne-Kim"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [98.65723, -21.9838]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 8,
          "properties": {
-             "Name": "Jordan Schilling",
+         "Name": "Jordan Schilling",
              "Notes": "region of Cabul",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Jordan-Schilling"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [102.87598, -27.95559]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 9,
          "properties": {
-             "Name": "Manuel Marroquin",
+         "Name": "Manuel Marroquin",
              "Notes": "Lake",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Manuel-Marroquin"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [87.45117, -32.45416]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 10,
          "properties": {
-             "Name": "Stephanie Kubus",
+         "Name": "Stephanie Kubus",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Stephanie-Kubus"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [59.76563, -32.58385]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 11,
          "properties": {
-             "Name": "Catherine Mary Barr",
+         "Name": "Catherine Mary Barr",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Catherine-Mary-Barr"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [75.12451, -25.81967]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 12,
          "properties": {
-             "Name": "Michael Halder",
+         "Name": "Michael Halder",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Michael-Halder"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [54.75586, -27.23509]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 13,
          "properties": {
-             "Name": "Michael Soisson",
+         "Name": "Michael Soisson",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Michael-Soisson"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [82.70508, -34.83184]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 14,
          "properties": {
-             "Name": "Lauren Czaja",
+         "Name": "Lauren Czaja",
              "Notes": "island of Quinsal",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Lauren-Czaja"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [78.12608, -32.82179]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 15,
          "properties": {
-             "Name": "Maria Vetter",
+         "Name": "Maria Vetter",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Maria-Vetter"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [99.84375, -20.01465]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 16,
          "properties": {
-             "Name": "Beckett Haglund",
+         "Name": "Beckett Haglund",
              "Notes": "",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Beckett-Haglund"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [90.62622, -16.56776]
-         }
-     }, {
-         "type": "Feature",
+     }
+ }, {
+     "type": "Feature",
          "id": 17,
          "properties": {
-             "Name": "Daniel Lindstrom",
+         "Name": "Daniel Lindstrom",
              "Notes": "Island of Giava",
              "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/Daniel-Lindstrom"
-         },
+     },
          "geometry": {
-             "type": "Point",
+         "type": "Point",
              "coordinates": [91.53809, -12.8118]
-         }
- }];
-function onEachFeature(feature, layer) {
-    layer.bindPopup(feature.properties.Name, {closeButton: false});
+     }
 
-    layer.on('click', function (e) {
-     	window.open(feature.properties.tag);
-    });
+ }, {
+     "type": "Feature",
+         "id": 17,
+         "properties": {
+         "Name": "Melissa Dinsman",
+             "Notes": "TESTING",
+             "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/melissa-dinsman-test-1"
+     },
+         "geometry": {
+         "type": "Point",
+             "coordinates": [50.31738, -21.1255]
+     }
 
-    
-    
-    
-}//end onEachFeature
+ }, {
+     "type": "Feature",
+         "id": 17,
+         "properties": {
+         "Name": "Sabrina Ferri",
+             "Notes": "TESTING",
+             "tag": "http:\/\/scalar.usc.edu\/works\/imaginary_worlds\/sabrinalandia"
+     },
+         "geometry": {
+         "type": "Point",
+             "coordinates": [62.00684, -18.14585]
+     }
 
-var studPoints = L.geoJson(studentPoints, {
-    onEachFeature: onEachFeature
-})
-studPoints.on('mouseover', function(e) {
-    e.layer.openPopup();
-});
-studPoints.on('mouseout', function(e) {
-    e.layer.closePopup();
-});
-studPoints.addTo(map);
+ } ];
 
+ function onEachFeature(feature, layer) {
+     layer.bindPopup(feature.properties.Name, {
+         closeButton: false
+     });
+
+     layer.on('click', function (e) {
+         window.open(feature.properties.tag);
+     });
+
+
+
+
+ } //end onEachFeature
+
+ var studPoints = L.geoJson(studentPoints, {
+     onEachFeature: onEachFeature,
+     filter: function(feature, layer) {
+        if (filterTestingOut) { return feature.properties.Notes != "TESTING"; }
+        else {return true;}
+    }//end filter
+ })
+ studPoints.on('mouseover', function (e) {
+     e.layer.openPopup();
+ });
+ studPoints.on('mouseout', function (e) {
+     e.layer.closePopup();
+ });
+ studPoints.addTo(map);	
 
     </script>
 </body>
